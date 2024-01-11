@@ -10,7 +10,9 @@ module "ec2-private" {
   instance_type = var.instance_type
   key_name      = var.instance_keypair
   # used vpc-output file for reference 
-  subnet_ids = [module.private_sg.security_group_vpc_id[0], module.private_sg.security_group_vpc_id[1]]
+  subnet_ids = [
+    module.private_sg.security_group_vpc_id[0], module.private_sg.security_group_vpc_id[1]
+  ]
   # user security-group-output for it
   vpc_security_group_ids = [module.private_sg.security_group_vpc_id]
   tags                   = local.common_tags
