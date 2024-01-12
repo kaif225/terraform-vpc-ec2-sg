@@ -13,11 +13,11 @@ module "ec2-private" {
  /*
     # the below code is commented because it is not working for the above versions
    subnet_ids = [
-    module.private_sg.security_group_vpc_id[0], module.private_sg.security_group_vpc_id[1]
+    module.private_sg.security_group_id[0], module.private_sg.security_group_id[1]
   ]
 */
   # user security-group-output for it
-  vpc_security_group_ids = [module.private_sg.security_group_vpc_id]
+  vpc_security_group_ids = [module.private_sg.security_group_id]
    # the for_each and subnet_id is used here because we want to use 2 subnets for the private instance
    for_each = toset(["0","1"])
    subnet_id = element(module.vpc.private_subnets, tonumber(each.key))
