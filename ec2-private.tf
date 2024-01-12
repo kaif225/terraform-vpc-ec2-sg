@@ -16,7 +16,7 @@ module "ec2-private" {
   # user security-group-output for it
   vpc_security_group_ids = [module.private_sg.security_group_vpc_id]
   tags                   = local.common_tags
-  user_data              = file("${path.module}/app1-install.sh}")
+  user_data              = file("${path.module}/app1-install.sh")
 
 
 }
